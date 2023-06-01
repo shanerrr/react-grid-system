@@ -25,6 +25,7 @@ export default function Grid({ layout, onLayoutChange }: Props) {
       cols={Math.floor(width / 300)}
       rowHeight={300}
       compactType={null}
+      margin={[0, 0]}
       width={width}
       onLayoutChange={(layout) => onLayoutChange(layout)}
       maxRows={Math.floor((height - 32) / 300)}
