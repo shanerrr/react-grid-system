@@ -5,6 +5,9 @@ import "react-resizable/css/styles.css";
 
 import GridLayout from "react-grid-layout";
 import useWindowSize from "@/hooks/useWindowSize";
+import Notepad from "../Notepad";
+import Weather from "../Weather";
+import Photos from "../Photos";
 
 export default function Grid({ items }: { items: any }) {
   // resize hook so we can compute cols and rows
@@ -30,17 +33,23 @@ export default function Grid({ items }: { items: any }) {
         key="widget1"
         className="bg-slate-50"
         data-grid={{ x: 0, y: 0, w: 1, h: 1 }}
-      ></div>
+      >
+        <Notepad />
+      </div>
       <div
         key="widget2"
         className="bg-slate-50"
         data-grid={{ x: 4, y: 0, w: 1, h: 1 }}
-      ></div>
+      >
+        <Weather />
+      </div>
       <div
         key="widget3"
         className="bg-slate-50"
         data-grid={{ x: 0, y: 4, w: 1, h: 1 }}
-      ></div>
+      >
+        <Photos />
+      </div>
     </GridLayout>
   );
 }
