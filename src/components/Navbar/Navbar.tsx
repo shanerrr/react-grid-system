@@ -1,24 +1,35 @@
 "use client";
 import Link from "next/link";
 
-type Props = {};
+type Props = {
+  onSaveLayout: () => void;
+  onLoadLayout: () => void;
+};
 
-export default function Navbar({}: Props) {
+export default function Navbar({ onSaveLayout, onLoadLayout }: Props) {
   const isLogged = localStorage.getItem("account");
   return (
     <nav className="h-8 flex items-center w-full px-4 bg-slate-900">
       {isLogged ? (
         <div className="flex justify-between w-full">
           <div>
-            <button className="bg-slate-600 text-white font-bold px-4">
+            <button
+              onClick={onSaveLayout}
+              className="bg-slate-600 text-white font-bold px-4"
+            >
               SAVE
             </button>
-            <button className="bg-slate-700 text-white font-bold px-4">
+            <button
+              onClick={onLoadLayout}
+              className="bg-slate-700 text-white font-bold px-4"
+            >
               LOAD
             </button>
           </div>
           <div className="flex gap-4">
-            <span className="font-bold text-white">{localStorage.getItem("account")}</span>
+            <span className="font-bold text-white">
+              {localStorage.getItem("account")}
+            </span>
             <button
               onClick={() => {
                 localStorage.removeItem("account");

@@ -9,15 +9,15 @@ import Notepad from "../Notepad";
 import Weather from "../Weather";
 import Photos from "../Photos";
 
-export default function Grid({ items }: { items: any }) {
+export default function Grid({
+  layout,
+  onLayoutChange,
+}: {
+  layout: any;
+  onLayoutChange: (layout: GridLayout.Layout[]) => void;
+}) {
   // resize hook so we can compute cols and rows
   const { width, height } = useWindowSize();
-
-  const layout = [
-    { i: "widget1", x: 1, y: 0, w: 1, h: 1 },
-    { i: "widget2", x: 2, y: 0, w: 1, h: 1 },
-    { i: "widget3", x: 3, y: 0, w: 1, h: 1 },
-  ];
 
   return (
     <GridLayout
@@ -27,27 +27,16 @@ export default function Grid({ items }: { items: any }) {
       rowHeight={300}
       compactType={null}
       width={width}
+      onLayoutChange={(layout) => onLayoutChange(layout)}
       maxRows={Math.floor((height - 32) / 300)}
     >
-      <div
-        key="widget1"
-        className="bg-slate-50"
-        data-grid={{ x: 0, y: 0, w: 1, h: 1 }}
-      >
+      <div key="widget1" data-grid={{ x: 0, y: 0, w: 1, h: 1 }}>
         <Notepad />
       </div>
-      <div
-        key="widget2"
-        className="bg-slate-50"
-        data-grid={{ x: 4, y: 0, w: 1, h: 1 }}
-      >
+      <div key="widget2" data-grid={{ x: 4, y: 0, w: 1, h: 1 }}>
         <Weather />
       </div>
-      <div
-        key="widget3"
-        className="bg-slate-50"
-        data-grid={{ x: 0, y: 4, w: 1, h: 1 }}
-      >
+      <div key="widget3" data-grid={{ x: 0, y: 4, w: 1, h: 1 }}>
         <Photos />
       </div>
     </GridLayout>
