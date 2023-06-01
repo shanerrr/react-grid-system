@@ -9,13 +9,12 @@ import Notepad from "../Notepad";
 import Weather from "../Weather";
 import Photos from "../Photos";
 
-export default function Grid({
-  layout,
-  onLayoutChange,
-}: {
+type Props = {
   layout: any;
   onLayoutChange: (layout: GridLayout.Layout[]) => void;
-}) {
+};
+
+export default function Grid({ layout, onLayoutChange }: Props) {
   // resize hook so we can compute cols and rows
   const { width, height } = useWindowSize();
 

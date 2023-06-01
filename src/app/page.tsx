@@ -10,6 +10,8 @@ import Navbar from "@/components/Navbar";
 import type { Layout } from "react-grid-layout";
 
 export default function Home() {
+  const [isLogged] = useState(localStorage.getItem("account"));
+
   const [layout, setLayout] = useState([
     { i: "widget1", x: 1, y: 0, w: 1, h: 1 },
     { i: "widget2", x: 2, y: 0, w: 1, h: 1 },
@@ -34,7 +36,11 @@ export default function Home() {
 
   return (
     <main>
-      <Navbar onSaveLayout={onSaveLayout} onLoadLayout={onLoadLayout} />
+      <Navbar
+        isLogged={!!isLogged}
+        onSaveLayout={onSaveLayout}
+        onLoadLayout={onLoadLayout}
+      />
       <Grid
         layout={layout}
         onLayoutChange={(layout) => onLayoutChange(layout)}

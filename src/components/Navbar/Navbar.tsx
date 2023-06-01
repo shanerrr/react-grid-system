@@ -2,12 +2,16 @@
 import Link from "next/link";
 
 type Props = {
+  isLogged: boolean;
   onSaveLayout: () => void;
   onLoadLayout: () => void;
 };
 
-export default function Navbar({ onSaveLayout, onLoadLayout }: Props) {
-  const isLogged = localStorage.getItem("account");
+export default function Navbar({
+  isLogged,
+  onSaveLayout,
+  onLoadLayout,
+}: Props) {
   return (
     <nav className="h-8 flex items-center w-full px-4 bg-slate-900">
       {isLogged ? (
