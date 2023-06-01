@@ -2,7 +2,7 @@
 import Link from "next/link";
 
 type Props = {
-  isLogged: boolean;
+  isLogged: string | null;
   onSaveLayout: () => void;
   onLoadLayout: () => void;
 };
@@ -31,9 +31,7 @@ export default function Navbar({
             </button>
           </div>
           <div className="flex gap-4">
-            <span className="font-bold text-white">
-              {localStorage.getItem("account")}
-            </span>
+            <span className="font-bold text-white">{isLogged}</span>
             <button
               onClick={() => {
                 localStorage.removeItem("account");
