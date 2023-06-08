@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // components
 import Grid from "@/components/Grid/Grid";
@@ -10,7 +10,7 @@ import Navbar from "@/components/Navbar";
 import type { Layout } from "react-grid-layout";
 
 export default function Home() {
-  const [isLogged] = useState(localStorage.getItem("account"));
+  const [isLogged, setIsLogged] = useState<string | null>(null);
 
   const [layout, setLayout] = useState([
     { i: "widget1", x: 0, y: 0, w: 1, h: 1 },
@@ -31,8 +31,12 @@ export default function Home() {
   //load any layouts set prior to be allowed to load
   const onLoadLayout = () => {
     const layout = localStorage.getItem("LAYOUT");
-    setLayout(layout ? JSON.parse(localStorage.getItem("LAYOUT")!) : []);
+    if (layout) return setLayout(JSON.parse(localStorage.getItem("LAYOUT")!));
   };
+
+  useEffect(() => {
+    setIsLogged(localStorage.getItem("account"));
+  }, []);
 
   return (
     <main>

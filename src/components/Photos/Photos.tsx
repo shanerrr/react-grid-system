@@ -2,11 +2,11 @@ import { useState } from "react";
 import Image from "next/image";
 
 export default function Photos() {
-  const [pictures] = useState([
+  const pictures = [
     "https://www.gardendesign.com/pictures/images/675x529Max/site_3/helianthus-yellow-flower-pixabay_11863.jpg",
     "https://www.gardendesign.com/pictures/images/675x529Max/site_3/zinnia-orange-flower-pixabay_11868.jpg",
     "https://www.gardendesign.com/pictures/images/675x529Max/site_3/marigold-light-orange-flower-pixabay_11875.jpg",
-  ]);
+  ];
   const [picIndex, setPicIndex] = useState(0);
 
   const clickHandler = (type: "NEXT" | "PREV") => {
@@ -32,7 +32,6 @@ export default function Photos() {
         className="object-cover"
         alt="flower pic"
         src={pictures[picIndex]}
-        loader={() => pictures[picIndex]}
         fill={true}
       />
       <button
